@@ -79,17 +79,45 @@ void hcms_200x_stop()
 #define    xxxx_  0x1E
 #define    xxxxx  0x1F
 
-const uint8_t letter_F[] =
+const uint8_t letters[4][7] =
 {
-	xxxxx,
-	x____,
-	x____,
-	xxx__,
-	x____,
-	x____,
-	x____
-}; // F
-
+{
+xxxxx,
+x____,
+x____,
+xxx__,
+x____,
+x____,
+x____
+}, // F
+{
+x___x,
+x___x,
+x___x,
+x___x,
+x___x,
+x___x,
+_xxx_
+}, // U
+{
+_xxx_,
+x___x,
+x____,
+x____,
+x____,
+x___x,
+_xxx_
+}, // C
+{
+x___x,
+x__x_,
+x_x__,
+xx___,
+x_x__,
+x__x_,
+x___x
+} // K
+};
 
 #define xxxxxxx 0b1111111
 #define x__x___ 0b1001000
@@ -126,7 +154,7 @@ static void _push_rows(uint8_t col)
 	{
 		for(row = 0; row < 7; ++row)
 		{
-			if((letter_F2[col] >> row) & 1)
+			if((letters[3 - chr][6 - row] >> (4 - col)) & 1)
 			{
 				DATA1_CLK;
 			}
