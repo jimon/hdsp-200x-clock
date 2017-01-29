@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:hdsp_components
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -28,6 +29,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:hw-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -43,14 +45,290 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L ATTINY84-S IC?
+L ATTINY84-S IC1
 U 1 1 588E446B
-P 3000 2050
-F 0 "IC?" H 2150 2800 50  0000 C CNN
-F 1 "ATTINY84-S" H 3700 1300 50  0000 C CNN
-F 2 "SO14" H 3000 1850 50  0000 C CIN
-F 3 "" H 3000 2050 50  0000 C CNN
-	1    3000 2050
+P 3150 2700
+F 0 "IC1" H 2300 3450 50  0000 C CNN
+F 1 "ATTINY84-S" H 3850 1950 50  0000 C CNN
+F 2 "SO14" H 3150 2500 50  0000 C CIN
+F 3 "" H 3150 2700 50  0000 C CNN
+	1    3150 2700
 	1    0    0    -1  
 $EndComp
+$Comp
+L USB_OTG P?
+U 1 1 588EB5C7
+P 1650 2400
+F 0 "P?" H 1975 2275 50  0000 C CNN
+F 1 "USB_OTG" H 1650 2600 50  0000 C CNN
+F 2 "" V 1600 2300 50  0000 C CNN
+F 3 "" V 1600 2300 50  0000 C CNN
+	1    1650 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L HDSP-200x IC3
+U 1 1 588EB7DB
+P 9600 2250
+F 0 "IC3" H 9600 2150 60  0000 C CNN
+F 1 "HDSP-200x" H 9600 2250 60  0000 C CNN
+F 2 "" H 9600 2150 60  0001 C CNN
+F 3 "" H 9600 2150 60  0001 C CNN
+	1    9600 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L TBD62783AFNG IC2
+U 1 1 588EB850
+P 5700 1500
+F 0 "IC2" H 5700 1400 60  0000 C CNN
+F 1 "TBD62783AFNG" H 5700 1500 60  0000 C CNN
+F 2 "" H 5700 1400 60  0001 C CNN
+F 3 "" H 5700 1400 60  0001 C CNN
+	1    5700 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 1150 6700 1150
+Entry Wire Line
+	6700 1150 6800 1250
+Entry Wire Line
+	6700 1250 6800 1350
+Entry Wire Line
+	6700 1350 6800 1450
+Entry Wire Line
+	6700 1450 6800 1550
+Entry Wire Line
+	6700 1550 6800 1650
+Wire Bus Line
+	6800 1250 6800 1750
+Wire Wire Line
+	6500 1250 6700 1250
+Wire Wire Line
+	6500 1350 6700 1350
+Wire Wire Line
+	6500 1450 6700 1450
+Wire Wire Line
+	6500 1550 6700 1550
+$Comp
+L GND #PWR?
+U 1 1 588EC55D
+P 5700 2250
+F 0 "#PWR?" H 5700 2000 50  0001 C CNN
+F 1 "GND" H 5700 2100 50  0000 C CNN
+F 2 "" H 5700 2250 50  0000 C CNN
+F 3 "" H 5700 2250 50  0000 C CNN
+	1    5700 2250
+	1    0    0    -1  
+$EndComp
+Wire Bus Line
+	6800 1750 6900 1750
+Text GLabel 6900 1750 2    60   Input ~ 0
+columns
+Wire Wire Line
+	4900 1150 4750 1150
+Wire Wire Line
+	4900 1250 4750 1250
+Wire Wire Line
+	4900 1350 4750 1350
+Wire Wire Line
+	4900 1450 4750 1450
+Wire Wire Line
+	4900 1550 4750 1550
+Text Label 6550 1150 0    60   ~ 0
+C1
+Text Label 6550 1250 0    60   ~ 0
+C2
+Text Label 6550 1350 0    60   ~ 0
+C3
+Text Label 6550 1450 0    60   ~ 0
+C4
+Text Label 6550 1550 0    60   ~ 0
+C5
+Entry Wire Line
+	4650 1050 4750 1150
+Entry Wire Line
+	4650 1150 4750 1250
+Entry Wire Line
+	4650 1250 4750 1350
+Entry Wire Line
+	4650 1350 4750 1450
+Entry Wire Line
+	4650 1450 4750 1550
+Wire Bus Line
+	4650 950  4650 1450
+Wire Bus Line
+	4650 950  4550 950 
+Text GLabel 4550 950  0    60   Input ~ 0
+columns_logic
+Text Label 4750 1150 0    60   ~ 0
+CL1
+Text Label 4750 1250 0    60   ~ 0
+CL2
+Text Label 4750 1350 0    60   ~ 0
+CL3
+Text Label 4750 1450 0    60   ~ 0
+CL4
+Text Label 4750 1550 0    60   ~ 0
+CL5
+$Comp
+L VCC #PWR?
+U 1 1 588ED04F
+P 5700 850
+F 0 "#PWR?" H 5700 700 50  0001 C CNN
+F 1 "VCC" H 5700 1000 50  0000 C CNN
+F 2 "" H 5700 850 50  0000 C CNN
+F 3 "" H 5700 850 50  0000 C CNN
+	1    5700 850 
+	1    0    0    -1  
+$EndComp
+Text Notes 5800 900  0    60   ~ 0
+TODO do we need decoupling here?
+Wire Wire Line
+	4800 1650 4900 1650
+Wire Wire Line
+	4800 1650 4800 2200
+Wire Wire Line
+	4800 1750 4900 1750
+Wire Wire Line
+	4800 1850 4900 1850
+Connection ~ 4800 1750
+Connection ~ 4800 1850
+Wire Wire Line
+	5700 2150 5700 2250
+Wire Wire Line
+	4800 2200 5700 2200
+Connection ~ 5700 2200
+Wire Wire Line
+	6500 1650 6600 1650
+Wire Wire Line
+	6600 1650 6600 2250
+Wire Wire Line
+	6600 1750 6500 1750
+Wire Wire Line
+	6600 1850 6500 1850
+Connection ~ 6600 1750
+$Comp
+L VCC #PWR?
+U 1 1 588ED2A7
+P 6600 2250
+F 0 "#PWR?" H 6600 2100 50  0001 C CNN
+F 1 "VCC" H 6600 2400 50  0000 C CNN
+F 2 "" H 6600 2250 50  0000 C CNN
+F 3 "" H 6600 2250 50  0000 C CNN
+	1    6600 2250
+	-1   0    0    1   
+$EndComp
+Connection ~ 6600 1850
+Wire Wire Line
+	8550 1850 8350 1850
+Wire Wire Line
+	8550 1950 8350 1950
+Wire Wire Line
+	8550 2050 8350 2050
+Wire Wire Line
+	8550 2150 8350 2150
+Wire Wire Line
+	8550 2250 8350 2250
+Entry Wire Line
+	8250 1750 8350 1850
+Entry Wire Line
+	8250 1850 8350 1950
+Entry Wire Line
+	8250 1950 8350 2050
+Entry Wire Line
+	8250 2050 8350 2150
+Entry Wire Line
+	8250 2150 8350 2250
+Wire Bus Line
+	8250 1650 8250 2150
+Wire Bus Line
+	8250 1650 8150 1650
+Text GLabel 8150 1650 0    60   Input ~ 0
+columns
+Text Label 8400 1850 0    60   ~ 0
+C1
+Text Label 8400 1950 0    60   ~ 0
+C2
+Text Label 8400 2050 0    60   ~ 0
+C3
+Text Label 8400 2150 0    60   ~ 0
+C4
+Text Label 8400 2250 0    60   ~ 0
+C5
+Wire Wire Line
+	8550 2400 8250 2400
+Wire Wire Line
+	8550 2500 8250 2500
+Wire Wire Line
+	8550 2600 8250 2600
+Entry Wire Line
+	8150 2300 8250 2400
+Entry Wire Line
+	8150 2400 8250 2500
+Entry Wire Line
+	8150 2500 8250 2600
+Wire Bus Line
+	8150 2200 8150 2500
+Wire Bus Line
+	8150 2200 8050 2200
+Text GLabel 8050 2200 0    60   Input ~ 0
+data
+Text Label 8300 2600 0    60   ~ 0
+D1
+Text Label 8300 2500 0    60   ~ 0
+CLK
+Text Label 8300 2400 0    60   ~ 0
+Vb
+$Comp
+L C C1
+U 1 1 588EDA7F
+P 10550 1800
+F 0 "C1" H 10575 1900 50  0000 L CNN
+F 1 "10u" H 10575 1700 50  0000 L CNN
+F 2 "" H 10588 1650 50  0000 C CNN
+F 3 "" H 10550 1800 50  0000 C CNN
+	1    10550 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR?
+U 1 1 588EDB26
+P 9600 1450
+F 0 "#PWR?" H 9600 1300 50  0001 C CNN
+F 1 "VCC" H 9600 1600 50  0000 C CNN
+F 2 "" H 9600 1450 50  0000 C CNN
+F 3 "" H 9600 1450 50  0000 C CNN
+	1    9600 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 588EDCD8
+P 10550 1950
+F 0 "#PWR?" H 10550 1700 50  0001 C CNN
+F 1 "GND" H 10550 1800 50  0000 C CNN
+F 2 "" H 10550 1950 50  0000 C CNN
+F 3 "" H 10550 1950 50  0000 C CNN
+	1    10550 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10550 1500 10550 1650
+$Comp
+L GND #PWR?
+U 1 1 588EDE57
+P 9600 2950
+F 0 "#PWR?" H 9600 2700 50  0001 C CNN
+F 1 "GND" H 9600 2800 50  0000 C CNN
+F 2 "" H 9600 2950 50  0000 C CNN
+F 3 "" H 9600 2950 50  0000 C CNN
+	1    9600 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 1550 9600 1450
+Wire Wire Line
+	9600 1500 10550 1500
+Connection ~ 9600 1500
 $EndSCHEMATC
